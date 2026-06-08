@@ -2,16 +2,80 @@
 
 @section('content')
 
-<section class="pt-40 pb-24">
-    <div class="max-w-4xl mx-auto px-6">
-        <h1 class="text-6xl font-black">
+<section class="pt-32 pb-24">
+<div class="max-w-6xl mx-auto px-6">
+    <img
+        src="{{ asset('storage/' . ($post->banner ?? $post->thumbnail)) }}"
+        class="w-full h-[500px] object-cover rounded-3xl">
+    <div class="mt-12">
+        <span class="text-orange-500 uppercase">
+            {{ ucfirst($post->category) }}
+        </span>
+        <h1 class="text-6xl font-black mt-4">
             {{ $post->title }}
         </h1>
-        <img src="{{ asset('storage/'.$post->thumbnail) }}" class="w-full rounded-3xl mt-12">
-        <article class="glass-card p-10 mt-10 prose prose-invert max-w-none">
-            {!! $post->content !!}
-        </article>
+        <div class="flex gap-6 mt-6 text-gray-400">
+            <span>
+                📅 {{ optional($post->published_at)->format('d M Y') }}
+            </span>
+            <span>
+                👁 {{ $post->views }} Views
+            </span>
+        </div>
     </div>
+</div>
 </section>
+
+<section class="pb-24">
+<div class="max-w-4xl mx-auto px-6">
+    <article class="glass-card p-10 prose prose-invert max-w-none">
+        {!! $post->content !!}
+    </article>
+</div>
+</section>
+
+@if($post->gallery)
+<section class="pb-24">
+<div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-10">
+        Gallery
+    </h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach($post->gallery as $image)
+        <img
+            src="{{ asset('storage/'.$image) }}"
+            class="rounded-2xl h-64 object-cover w-full">
+        @endforeach
+    </div>
+</div>
+</section>
+@endif
+
+@if($relatedPosts->count())
+<section class="pb-24">
+<div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-10">
+        Related Articles
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8">
+        @foreach($relatedPosts as $related)
+        <a
+            href="{{ route('blog.show',$related->slug) }}"
+            class="glass-card overflow-hidden">
+            <img
+                src="{{ asset('storage/'.$related->thumbnail) }}"
+                class="w-full h-56 object-cover">
+            <div class="p-6">
+                <h3 class="text-xl font-bold">
+                    {{ $related->title }}
+                </h3>
+            </div>
+        </a>
+        @endforeach
+    </div>
+</div>
+</section>
+
+@endif
 
 @endsection

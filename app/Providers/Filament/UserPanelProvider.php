@@ -25,9 +25,10 @@ class UserPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('user')
-            ->path('user')
+            ->id('developer')
+            ->path('developer')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -54,6 +55,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\EnsureUserIsApproved::class,
             ]);
     }
 }

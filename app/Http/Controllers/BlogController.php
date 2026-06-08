@@ -9,18 +9,61 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::query()
-            ->when($request->search, function ($query) use ($request) {
-                $query->where('title', 'like', '%' . $request->search . '%');
-            })
+        $featuredPost = Post::where('is_featured', true)
+            ->where('status', 'published')
             ->latest()
-            ->paginate(9);
-
-        return view('blog.index', compact('posts'));
+            ->first();
+        $posts = Post::query()
+            ->where('status', 'published')
+            ->when(
+                $request->search,
+                fn ($query) =>
+                    $query->where(
+                        'title',
+                        'like',
+                        '%' . $request->search . '%'
+                    )
+            )
+            ->when(
+                $request->category,
+                fn ($query) =>
+                    $query->where(
+                        'category',
+                        $request->category
+                    )
+            )
+            ->latest()
+            ->paginate(9)
+            ->withQueryString();
+        return view(
+            'blog.index',
+            compact(
+                'posts',
+                'featuredPost'
+            )
+        );
     }
 
     public function show(Post $post)
     {
-        return view('blog.show', compact('post'));
+        $post->increment('views');
+
+        $relatedPosts = Post::where(
+            'category',
+            $post->category
+        )
+        ->where('id', '!=', $post->id)
+        ->where('status', 'published')
+        ->latest()
+        ->take(3)
+        ->get();
+
+        return view(
+            'blog.show',
+            compact(
+                'post',
+                'relatedPosts'
+            )
+        );
     }
 }

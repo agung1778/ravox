@@ -27,8 +27,6 @@ Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.sho
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-
-
 Route::get('/sitemap.xml', function () {
 
     Sitemap::create()

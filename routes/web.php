@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;

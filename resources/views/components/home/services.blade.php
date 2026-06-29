@@ -36,7 +36,7 @@
                 </p>
 
                 <a
-                    href="{{ route('about') }}"
+                    href="{{ route('about.index') }}"
                     class="inline-flex items-center mt-10 px-8 py-4 bg-orange-500 rounded-xl hover:bg-orange-600 transition">
 
                     Learn More →

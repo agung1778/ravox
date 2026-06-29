@@ -45,9 +45,9 @@
 
                     <li><a href="{{ route('blog.index') }}" class="hover:text-orange-500 transition">Blog</a></li>
 
-                    <li><a href="{{ route('about') }}" class="hover:text-orange-500 transition">About</a></li>
+                    <li><a href="{{ route('about.index') }}" class="hover:text-orange-500 transition">About</a></li>
 
-                    <li><a href="{{ route('contact') }}" class="hover:text-orange-500 transition">Contact</a></li>
+                    <li><a href="{{ route('contact.index') }}" class="hover:text-orange-500 transition">Contact</a></li>
 
                 </ul>
 

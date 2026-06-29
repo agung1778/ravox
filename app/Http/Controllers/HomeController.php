@@ -16,18 +16,51 @@ class HomeController extends Controller
         SEOMeta::setDescription(
             'Portfolio, Indie Game Studio, and Digital Agency'
         );
-        $projects = Project::where('status', 'published')->where('is_featured', true)->latest()->take(6)->get();
-        $games = Game::latest()->take(3)->get();
-        $posts = Post::latest()->take(3)->get();
-        $testimonials = Testimonial::latest()->take(6)->get();
+
+        $projects = Project::where('status', 'published')
+            ->where('is_featured', true)
+            ->latest()
+            ->take(6)
+            ->get();
+
+        $games = Game::where('status', 'released')
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $posts = Post::where('status', 'published')
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $testimonials = Testimonial::latest()
+            ->take(6)
+            ->get();
+
+        // Hero Stats
+        $projectCount = Project::where('status', 'published')->count();
+
+        $gameCount = Game::where('status', 'released')->count();
+
+        $postCount = Post::where('status', 'published')->count();
+
+        $downloadCount = Game::sum('downloads');
+
+        $viewCount = Game::sum('views') + Post::sum('views');
+
+        $featuredGame = Game::where('featured', true)->first();
 
         return view('home', compact(
             'projects',
             'games',
             'posts',
-            'testimonials'
+            'testimonials',
+            'projectCount',
+            'gameCount',
+            'postCount',
+            'downloadCount',
+            'viewCount',
+            'featuredGame'
         ));
     }
-    
-    
 }

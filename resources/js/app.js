@@ -79,3 +79,44 @@ window.addEventListener("load", () => {
     }
 
 });
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const counters = document.querySelectorAll('.counter');
+
+    counters.forEach(counter => {
+
+        const target = Number(counter.dataset.target);
+
+        let current = 0;
+
+        const step = Math.max(1, Math.ceil(target / 80));
+
+        const update = () => {
+
+            current += step;
+
+            if (current >= target) {
+
+                counter.innerText = target.toLocaleString();
+
+            } else {
+
+                counter.innerText = current.toLocaleString();
+
+                requestAnimationFrame(update);
+
+            }
+
+        };
+
+        update();
+
+    });
+
+});

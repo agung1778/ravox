@@ -197,3 +197,125 @@ footer a:hover {
     animation:float 5s ease-in-out infinite;
 
 }
+
+#loading-screen{
+
+    backdrop-filter:blur(20px);
+
+}
+
+#loading-bar{
+
+    box-shadow:0 0 20px #f97316;
+
+}
+
+#navbar{
+
+    transition:.35s ease;
+
+}
+
+#mobile-menu{
+
+    animation:fadeDown .3s ease;
+
+}
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   Reveal Animation
+=========================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* ===========================
+   Scroll Progress
+=========================== */
+
+#scroll-progress{
+
+    transition:width .15s linear;
+
+    box-shadow:0 0 20px #f97316;
+
+}
+
+/* ===========================
+   Mouse Glow
+=========================== */
+
+#mouse-glow{
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        left .08s linear,
+        top .08s linear;
+
+}
+
+/* ===========================
+   Premium Glass Card
+=========================== */
+
+.glass-card{
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:all .35s ease;
+
+}
+
+.glass-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(249,115,22,.4);
+
+    box-shadow:
+
+        0 20px 50px rgba(249,115,22,.15);
+
+}

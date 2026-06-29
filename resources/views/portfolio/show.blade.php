@@ -4,7 +4,7 @@
 
 <section class="pt-32 pb-24">
     <div class="max-w-7xl mx-auto px-6">
-        <img src="{{ asset('storage/' . ($project->banner ?? $project->thumbnail)) }}" class="w-full h-[500px] object-cover rounded-3xl">
+        <img loading="lazy" decoding="async" src="{{ asset('storage/' . ($project->banner ?? $project->thumbnail)) }}" class="w-full h-[500px] object-cover rounded-3xl">
         <div class="mt-12">
             <span class="text-orange-500 uppercase">
                 {{ $project->category }}
@@ -89,7 +89,7 @@
     </h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($project->gallery as $image)
-            <img src="{{ asset('storage/'.$image) }}" class="rounded-2xl w-full h-64 object-cover">
+            <img loading="lazy" decoding="async" src="{{ asset('storage/'.$image) }}" class="rounded-2xl w-full h-64 object-cover">
         @endforeach
     </div>
 </div>
@@ -124,7 +124,7 @@
     <div class="grid md:grid-cols-3 gap-8">
         @foreach($relatedProjects as $related)
             <a href="{{ route('portfolio.show', $related->slug) }}" class="glass-card overflow-hidden">
-                <img src="{{ asset('storage/'.$related->thumbnail) }}" class="w-full h-56 object-cover">
+                <img loading="lazy" decoding="async" src="{{ asset('storage/'.$related->thumbnail) }}" class="w-full h-56 object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-bold">
                         {{ $related->title }}

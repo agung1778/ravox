@@ -21,7 +21,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="glass-card overflow-hidden">
             <div class="grid lg:grid-cols-2">
-                <img src="{{ asset('storage/' . ($featuredGame->banner ?? $featuredGame->thumbnail)) }}" class="w-full h-full object-cover">
+                <img loading="lazy" decoding="async" src="{{ asset('storage/' . ($featuredGame->banner ?? $featuredGame->thumbnail)) }}" class="w-full h-full object-cover">
                 <div class="p-12 flex flex-col justify-center">
                     <span class="text-orange-500 uppercase">
                         Featured Game
@@ -95,7 +95,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse($games as $game)
                 <a href="{{ route('games.show', $game->slug) }}" class="glass-card overflow-hidden group">
-                    <img src="{{ asset('storage/'.$game->thumbnail) }}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
+                    <img loading="lazy" decoding="async" src="{{ asset('storage/'.$game->thumbnail) }}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
                     <div class="p-6">
                         <div class="flex justify-between items-center">
                             <span class="text-orange-500">

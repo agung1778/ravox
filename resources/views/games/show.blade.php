@@ -4,7 +4,7 @@
 
 <section class="pt-32 pb-24">
     <div class="max-w-7xl mx-auto px-6">
-        <img src="{{ asset('storage/' . ($game->banner ?: $game->thumbnail)) }}" class="w-full h-[500px] object-cover rounded-3xl">
+        <img loading="lazy" decoding="async" src="{{ asset('storage/' . ($game->banner ?: $game->thumbnail)) }}" class="w-full h-[500px] object-cover rounded-3xl">
         <div class="mt-12">
             <span class="text-orange-500 uppercase">
                 {{ ucfirst($game->genre) }}
@@ -113,7 +113,7 @@
         </h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($game->gallery as $image)
-            <img
+            <img loading="lazy" decoding="async"
                 src="{{ asset('storage/'.$image) }}"
                 class="rounded-2xl w-full h-64 object-cover">
             @endforeach
@@ -198,7 +198,7 @@
             @foreach($relatedGames as $related)
             <a href="{{ route('games.show',$related->slug) }}"
                class="glass-card overflow-hidden">
-                <img
+                <img loading="lazy" decoding="async"
                     src="{{ asset('storage/'.$related->thumbnail) }}"
                     class="w-full h-56 object-cover">
                 <div class="p-6">

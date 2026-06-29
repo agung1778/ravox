@@ -4,7 +4,7 @@
 
 <section class="pt-32 pb-24">
 <div class="max-w-6xl mx-auto px-6">
-    <img
+    <img loading="lazy" decoding="async"
         src="{{ asset('storage/' . ($post->banner ?? $post->thumbnail)) }}"
         class="w-full h-[500px] object-cover rounded-3xl">
     <div class="mt-12">
@@ -42,7 +42,7 @@
     </h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($post->gallery as $image)
-        <img
+        <img loading="lazy" decoding="async"
             src="{{ asset('storage/'.$image) }}"
             class="rounded-2xl h-64 object-cover w-full">
         @endforeach
@@ -62,7 +62,7 @@
         <a
             href="{{ route('blog.show',$related->slug) }}"
             class="glass-card overflow-hidden">
-            <img
+            <img loading="lazy" decoding="async"
                 src="{{ asset('storage/'.$related->thumbnail) }}"
                 class="w-full h-56 object-cover">
             <div class="p-6">

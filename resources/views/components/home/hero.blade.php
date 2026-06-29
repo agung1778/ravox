@@ -66,7 +66,7 @@
 
                 <div class="absolute w-72 h-72 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
 
-                <img
+                <img loading="lazy" decoding="async"
                     src="{{ asset('assets/logo-bgremove.png') }}"
                     alt="RAVØX Logo"
                     class="relative w-56 sm:w-72 md:w-80 lg:w-[420px] drop-shadow-[0_0_50px_rgba(255,120,0,.35)] animate-float"

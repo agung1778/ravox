@@ -7,7 +7,7 @@
             {{-- Brand --}}
             <div>
 
-                <img
+                <img loading="lazy" decoding="async"
                     src="{{ asset(setting('logo') ?: 'assets/logo-ravox-1.png') }}"
                     alt="RAVØX"
                     class="w-28 mb-6">

@@ -1,4 +1,4 @@
-<section id="blog" class="py-24 lg:py-32">
+<section id="blog" class="py-24 lg:py-32 reveal">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -43,7 +43,7 @@
 
                 <div class="grid lg:grid-cols-2">
 
-                    <img
+                    <img loading="lazy" decoding="async"
                         src="{{ asset('storage/'.$featuredPost->banner) }}"
                         class="w-full h-full object-cover">
 
@@ -111,7 +111,7 @@
 
                 <div class="glass-card rounded-3xl overflow-hidden hover:-translate-y-2 transition">
 
-                    <img
+                    <img loading="lazy" decoding="async"
                         src="{{ asset('storage/'.$post->thumbnail) }}"
                         class="w-full h-56 object-cover">
 

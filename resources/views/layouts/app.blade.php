@@ -17,7 +17,16 @@
 </head>
 
 <body class="bg-black text-white overflow-x-hidden ">
-        @include('partials.navbar')
+    <div
+    id="mouse-glow"
+    class="pointer-events-none fixed w-96 h-96 rounded-full blur-3xl opacity-20 bg-orange-500 z-0">
+</div>
+    <div
+    id="scroll-progress"
+    class="fixed top-0 left-0 z-[99999] h-1 bg-orange-500"
+    style="width:0%">
+</div>
+    @include('components.home.loading')
     <main>
         @yield('content')
     </main>

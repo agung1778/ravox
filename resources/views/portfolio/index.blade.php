@@ -21,7 +21,7 @@
     <div class="max-w-7xl mx-auto px-6">
     <div class="glass-card overflow-hidden">
         <div class="grid lg:grid-cols-2">
-            <img
+            <img loading="lazy" decoding="async"
                 src="{{ asset('storage/' . ($featuredProject->banner ?? $featuredProject->thumbnail)) }}"
                 class="w-full h-full object-cover">
             <div class="p-12">
@@ -83,7 +83,7 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         @foreach($projects as $project)
         <a href="{{ route('portfolio.show', $project->slug) }}" class="glass-card overflow-hidden group">
-            <img src="{{ asset('storage/' . ($project->thumbnail ?? 'defaults/project.jpg')) }}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
+            <img loading="lazy" decoding="async" src="{{ asset('storage/' . ($project->thumbnail ?? 'defaults/project.jpg')) }}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
             <div class="p-6">
                 <div class="flex justify-between items-center">
                     <span class="text-orange-500">

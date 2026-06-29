@@ -1,4 +1,4 @@
-<section id="testimonials" class="py-24 lg:py-32">
+<section id="testimonials" class="py-24 lg:py-32 reveal">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -44,7 +44,7 @@
 
                         @if($testimonial->avatar)
 
-                            <img
+                            <img loading="lazy" decoding="async"
                                 src="{{ asset('storage/'.$testimonial->avatar) }}"
                                 class="w-14 h-14 rounded-full object-cover">
 

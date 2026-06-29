@@ -1,4 +1,4 @@
-<section id="about" class="py-24 lg:py-32">
+<section id="about" class="py-24 lg:py-32 reveal">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

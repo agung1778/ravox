@@ -20,7 +20,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                <img src="{{ asset('assets/logo-ravox-1.png') }}" class="w-80 mx-auto">
+                <img loading="lazy" decoding="async" src="{{ asset('assets/logo-ravox-1.png') }}" class="w-80 mx-auto">
             </div>
             <div>
                 <h2 class="text-5xl font-bold">

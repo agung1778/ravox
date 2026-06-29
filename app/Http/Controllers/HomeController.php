@@ -17,16 +17,22 @@ class HomeController extends Controller
             'Portfolio, Indie Game Studio, and Digital Agency'
         );
 
+        $featuredGame = Game::where('featured', true)
+            ->where('status', 'released')
+            ->first();
+
+        $games = Game::where('status', 'released')
+            ->where('featured', false)
+            ->latest()
+            ->take(6)
+            ->get();
+
         $projects = Project::where('status', 'published')
             ->where('is_featured', true)
             ->latest()
             ->take(6)
             ->get();
 
-        $games = Game::where('status', 'released')
-            ->latest()
-            ->take(3)
-            ->get();
 
         $posts = Post::where('status', 'published')
             ->latest()
@@ -52,6 +58,7 @@ class HomeController extends Controller
 
         return view('home', compact(
             'projects',
+            'featuredGame',
             'games',
             'posts',
             'testimonials',
@@ -59,8 +66,7 @@ class HomeController extends Controller
             'gameCount',
             'postCount',
             'downloadCount',
-            'viewCount',
-            'featuredGame'
+            'viewCount'
         ));
     }
 }

@@ -10,16 +10,16 @@
 
 @include('components.home.services')
 
-@include('components.home.featured-projects')
+@include('components.home.projects')
 
-@include('components.home.featured-games')
+@include('components.home.games')
+
+@include('components.home.blog')
 
 @include('components.home.tech-stack')
 
 @include('components.home.testimonials')
 
-@include('components.home.latest-blog')
-
-@include('components.home.cta')
+@include('components.home.contact-cta')
 
 @endsection

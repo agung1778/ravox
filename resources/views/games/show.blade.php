@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('title',$game->seo_title ?? $game->title)
+
+@section('description',
+$game->seo_description ?? $game->description)
+
+@section('image',
+asset('storage/'.$game->banner))
+
 @section('content')
 
 <section class="pt-32 pb-24">

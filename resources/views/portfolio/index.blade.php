@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title','Portfolio | RAVØX')
+
+@section('description','Explore all portfolio projects created by RAVØX.')
+
 @section('content')
 
 <section class="pt-40 pb-24">

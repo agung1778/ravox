@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-    {{ setting('seo_title', 'RAVØX') }}
+        @yield('title', setting('seo_title', 'RAVØX'))
     </title>
-    <meta name="description" content="{{ setting('seo_description') }}">
+    <meta name="description" content="@yield('description', setting('seo_description'))">
     <meta name="keywords" content="{{ setting('seo_keywords') }}">
+    <meta name="author" content="RAVØX Studio">
+    <meta name="robots" content="index,follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ setting('seo_title') }}">
-    <meta property="og:description" content="{{ setting('seo_description') }}">
-    <meta property="og:image" content="{{ asset(setting('logo')) }}">
+    <meta property="og:site_name" content="RAVØX">
+    <meta property="og:title" content="@yield('title', setting('seo_title'))">
+    <meta property="og:description" content="@yield('description', setting('seo_description'))">
+    <meta property="og:image" content="@yield('image', asset('assets/logo-bgremove.png'))">
     <meta property="og:url" content="{{ url()->current() }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"    content="@yield('title', setting('seo_title'))">
+    <meta name="twitter:description" content="@yield('description', setting('seo_description'))">
+    <meta name="twitter:image" content="@yield('image', asset('assets/logo-ravox-1.png'))">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="theme-color" content="#ff6a00">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 

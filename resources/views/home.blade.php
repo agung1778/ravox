@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title','RAVØX | Portfolio • Game Studio • Software Development')
+
+@section('description',
+'Official website of RAVØX. Explore games, portfolio, blog, and digital products.')
 @section('content')
 
 @include('components.home.hero')

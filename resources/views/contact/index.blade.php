@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title','Contact | RAVØX')
 @section('content')
 
 <section class="pt-40 pb-24">

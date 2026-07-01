@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title','Games | RAVØX')
+
+@section('description','Play indie games created by RAVØX Studio.')
 @section('content')
 
 <section class="pt-40 pb-24">

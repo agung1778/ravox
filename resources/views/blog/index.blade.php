@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title','Blog | RAVØX')
+
+@section('description',
+'Articles, devlogs, tutorials, and technology updates.')
+
 @section('content')
 
 <section class="pt-40 pb-24">

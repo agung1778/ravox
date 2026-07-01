@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('title',$project->seo_title ?? $project->title)
+
+@section('description',
+$project->seo_description ?? $project->description)
+
+@section('image',
+asset('storage/'.$project->banner))
+
 @section('content')
 
 <section class="pt-32 pb-24">

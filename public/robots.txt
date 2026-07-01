@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ravox.id/sitemap.xml
+Sitemap: https://ravox.my.id/sitemap.xml

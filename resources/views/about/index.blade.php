@@ -7,7 +7,7 @@
         <span class="text-orange-500 uppercase tracking-widest">
             About RAVØX
         </span>
-        <h1 class="text-6xl lg:text-7xl font-black mt-4">
+        <h1 class=" text-4xl sm:text-5xl lg:text-7xl leading-tight lg:text-7xl font-black mt-4">
             Building Digital Products, Games, and Experiences.
         </h1>
         <p class="text-xl text-gray-400 mt-8 max-w-3xl">
@@ -20,7 +20,7 @@
     <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                <img loading="lazy" decoding="async" src="{{ asset('assets/logo-ravox-1.png') }}" class="w-80 mx-auto">
+                <img loading="lazy" decoding="async" src="{{ asset('assets/logo-bgremove.png') }}" class="w-80 mx-auto">
             </div>
             <div>
                 <h2 class="text-5xl font-bold">

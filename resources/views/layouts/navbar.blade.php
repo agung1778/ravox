@@ -45,7 +45,7 @@
                     About
                 </a>
 
-                <a href="{{ route('contact') }}" class="hover:text-orange-500 transition">
+                <a href="{{ route('contact.index') }}" class="hover:text-orange-500 transition">
                     Contact
                 </a>
 
@@ -106,9 +106,9 @@
 
         <a href="{{ route('blog.index') }}">Blog</a>
 
-        <a href="{{ route('about') }}">About</a>
+        <a href="{{ route('about.index') }}">About</a>
 
-        <a href="{{ route('contact') }}">Contact</a>
+        <a href="{{ route('contact.index') }}">Contact</a>
 
         <a
             href="{{ url('/developer') }}"

@@ -17,7 +17,6 @@
 </head>
 
 <body class="bg-black text-white overflow-x-hidden ">
-    @include('layouts.navbar')
     <div
     id="mouse-glow"
     class="pointer-events-none fixed w-96 h-96 rounded-full blur-3xl opacity-20 bg-orange-500 z-0">

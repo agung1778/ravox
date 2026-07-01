@@ -197,10 +197,10 @@ asset('storage/'.$game->banner))
             Related Games
         </h2>
         <p class="text-orange-500 text-sm">
-            {{ ucfirst($related->genre) }}
+            {{ ucfirst($$relatedGames->genre) }}
         </p>
         <p class="text-gray-500 text-sm">
-            {{ ucfirst($related->engine) }}
+            {{ ucfirst($$relatedGames->engine) }}
         </p>
         <div class="grid  sm:grid-cols-2  xl:grid-cols-3  gap-8">
             @foreach($relatedGames as $related)

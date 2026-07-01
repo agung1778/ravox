@@ -1,77 +1,172 @@
 <?php
 
-namespace App\Models;
+namespace App\Filament\Resources\Posts\Schemas;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use Cviebrock\EloquentSluggable\Sluggable;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
-class Post extends Model
+class PostForm
 {
-    protected $fillable = [
-        'title',
-        'slug',
-        'thumbnail',
-        'banner',
-        'gallery',
-        'excerpt',
-        'content',
-        'category',
-        'is_featured',
-        'status',
-        'views',
-        'published_at',
-        'seo_title',
-        'seo_description',
-    ];
-
-    protected $casts = [
-        'gallery' => 'array',
-        'published_at' => 'datetime',
-        'is_featured' => 'boolean',
-    ];
-
-    protected static function booted()
+    public static function configure(Schema $schema): Schema
     {
-        static::deleting(function ($post) {
+        return $schema
+            ->components([
 
-            if ($post->thumbnail) {
-                Storage::disk('public')->delete($post->thumbnail);
-            }
+                /*
+                |--------------------------------------------------------------------------
+                | Article Information
+                |--------------------------------------------------------------------------
+                */
 
-            if ($post->banner) {
-                Storage::disk('public')->delete($post->banner);
-            }
+                Section::make('Article Information')
+                    ->schema([
 
-            if ($post->gallery) {
-                foreach ($post->gallery as $image) {
-                    Storage::disk('public')->delete($image);
-                }
-            }
-        });
+                        Grid::make(2)
+                            ->schema([
 
-        static::updating(function ($post) {
+                                TextInput::make('title')
+                                    ->required()
+                                    ->live()
+                                    ->maxLength(255)
+                                    ->afterStateUpdated(function ($state, callable $set) {
+                                        $set('slug', Str::slug($state));
+                                    }),
 
-            if ($post->isDirty('thumbnail')) {
-                Storage::disk('public')->delete(
-                    $post->getOriginal('thumbnail')
-                );
-            }
+                                TextInput::make('slug')
+                                    ->required()
+                                    ->unique(ignoreRecord: true),
 
-            if ($post->isDirty('banner')) {
-                Storage::disk('public')->delete(
-                    $post->getOriginal('banner')
-                );
-            }
-        });
-    }
+                                Select::make('category')
+                                    ->options([
+                                        'tutorial' => 'Tutorial',
+                                        'devlog' => 'Devlog',
+                                        'news' => 'News',
+                                        'tips' => 'Tips',
+                                        'update' => 'Update',
+                                        'technology' => 'Technology',
+                                    ])
+                                    ->searchable()
+                                    ->required(),
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'title',
-            ],
-        ];
+                                Select::make('status')
+                                    ->options([
+                                        'draft' => 'Draft',
+                                        'published' => 'Published',
+                                    ])
+                                    ->default('draft')
+                                    ->required(),
+
+                                Toggle::make('is_featured')
+                                    ->label('Featured Article'),
+
+                                DateTimePicker::make('published_at')
+                                    ->label('Publish Date')
+                                    ->seconds(false),
+
+                            ]),
+
+                        Textarea::make('excerpt')
+                            ->rows(3)
+                            ->maxLength(250)
+                            ->columnSpanFull()
+                            ->helperText('Short description shown on blog cards.'),
+
+                    ]),
+
+                /*
+                |--------------------------------------------------------------------------
+                | Media
+                |--------------------------------------------------------------------------
+                */
+
+                Section::make('Media')
+                    ->schema([
+
+                        Grid::make(2)
+                            ->schema([
+
+                                FileUpload::make('thumbnail')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('posts/thumbnails')
+                                    ->imageEditor(),
+
+                                FileUpload::make('banner')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('posts/banners')
+                                    ->imageEditor(),
+
+                            ]),
+
+                        FileUpload::make('gallery')
+                            ->multiple()
+                            ->image()
+                            ->disk('public')
+                            ->directory('posts/gallery')
+                            ->imageEditor(),
+
+                    ]),
+
+                /*
+                |--------------------------------------------------------------------------
+                | Content
+                |--------------------------------------------------------------------------
+                */
+
+                Section::make('Content')
+                    ->schema([
+
+                        RichEditor::make('content')
+                            ->required()
+                            ->columnSpanFull()
+                            ->toolbarButtons([
+                                'bold',
+                                'italic',
+                                'strike',
+                                'underline',
+                                'bulletList',
+                                'orderedList',
+                                'blockquote',
+                                'h2',
+                                'h3',
+                                'link',
+                                'redo',
+                                'undo',
+                            ]),
+
+                    ]),
+
+                /*
+                |--------------------------------------------------------------------------
+                | SEO
+                |--------------------------------------------------------------------------
+                */
+
+                Section::make('SEO')
+                    ->collapsed()
+                    ->schema([
+
+                        TextInput::make('seo_title')
+                            ->maxLength(60)
+                            ->helperText('Recommended: 50-60 characters'),
+
+                        Textarea::make('seo_description')
+                            ->rows(3)
+                            ->maxLength(160)
+                            ->helperText('Recommended: 150-160 characters'),
+
+                    ]),
+
+            ]);
     }
 }

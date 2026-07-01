@@ -1,40 +1,56 @@
-import './bootstrap';
-import gsap from "gsap";
+import "./bootstrap";
 
-const counters =
-document.querySelectorAll(".counter");
+/* ==========================================
+   DOM READY
+========================================== */
 
-counters.forEach(counter=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-    let target =
-    +counter.dataset.target;
+    initLoader();
+    initCounters();
+    initMobileMenu();
+    initNavbar();
+    initReveal();
+    initProgressBar();
+    initSmoothScroll();
+    initMouseGlow();
+    initGlassCard();
 
-    let count = 0;
-
-    let update = ()=>{
-
-        if(count < target){
-
-            count++;
-
-            counter.innerText = count;
-
-            requestAnimationFrame(update);
-        }
-
-    }
-
-    update();
 });
 
+/* ==========================================
+   Loader
+========================================== */
 
+function initLoader() {
 
+    const loader = document.getElementById("loading-screen");
 
+    if (!loader) return;
 
+    window.addEventListener("load", () => {
 
-document.addEventListener('DOMContentLoaded', () => {
+        loader.classList.add("opacity-0");
 
-    const counters = document.querySelectorAll('.counter');
+        setTimeout(() => {
+
+            loader.remove();
+
+        }, 700);
+
+    });
+
+}
+
+/* ==========================================
+   Counter
+========================================== */
+
+function initCounters() {
+
+    const counters = document.querySelectorAll(".counter");
+
+    if (!counters.length) return;
 
     counters.forEach(counter => {
 
@@ -44,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const step = Math.max(1, Math.ceil(target / 80));
 
-        const update = () => {
+        function update() {
 
             current += step;
 
@@ -52,199 +68,223 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 counter.innerText = target.toLocaleString();
 
-            } else {
-
-                counter.innerText = current.toLocaleString();
-
-                requestAnimationFrame(update);
+                return;
 
             }
 
-        };
+            counter.innerText = current.toLocaleString();
+
+            requestAnimationFrame(update);
+
+        }
 
         update();
 
     });
 
-});
+}
 
-window.addEventListener("load", () => {
+/* ==========================================
+   Mobile Menu
+========================================== */
 
-    const loading = document.getElementById("loading-screen");
+function initMobileMenu() {
 
-    if (!loading) return;
+    const button = document.getElementById("mobile-menu-button");
 
-    loading.classList.add("opacity-0");
+    const menu = document.getElementById("mobile-menu");
 
-    setTimeout(() => {
+    if (!button || !menu) return;
 
-        loading.remove();
+    button.addEventListener("click", () => {
 
-    }, 700);
-
-});
-
-// Mobile Menu
-
-const menuBtn = document.getElementById("mobile-menu-button");
-
-const mobileMenu = document.getElementById("mobile-menu");
-
-if(menuBtn){
-
-    menuBtn.addEventListener("click",()=>{
-
-        mobileMenu.classList.toggle("hidden");
+        menu.classList.toggle("hidden");
 
     });
 
 }
 
-// Navbar Scroll
+/* ==========================================
+   Navbar
+========================================== */
 
-const navbar = document.getElementById("navbar");
+function initNavbar() {
 
-window.addEventListener("scroll",()=>{
+    const navbar = document.getElementById("navbar");
 
-    if(window.scrollY>50){
+    if (!navbar) return;
 
-        navbar.classList.add(
-            "bg-[#0b0f19]/90",
-            "backdrop-blur-xl",
-            "shadow-xl"
-        );
+    window.addEventListener("scroll", () => {
 
-    }else{
+        if (window.scrollY > 50) {
 
-        navbar.classList.remove(
-            "bg-[#0b0f19]/90",
-            "backdrop-blur-xl",
-            "shadow-xl"
-        );
+            navbar.classList.add(
+                "bg-[#0b0f19]/90",
+                "backdrop-blur-xl",
+                "shadow-xl"
+            );
+
+        } else {
+
+            navbar.classList.remove(
+                "bg-[#0b0f19]/90",
+                "backdrop-blur-xl",
+                "shadow-xl"
+            );
+
+        }
+
+    });
+
+}
+
+/* ==========================================
+   Scroll Reveal
+========================================== */
+
+function initReveal() {
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    if (!reveals.length) return;
+
+    function reveal() {
+
+        reveals.forEach(item => {
+
+            const top = item.getBoundingClientRect().top;
+
+            if (top < window.innerHeight - 120) {
+
+                item.classList.add("active");
+
+            }
+
+        });
 
     }
 
-});
+    reveal();
 
-/* ==========================
-   Scroll Reveal
-========================== */
+    window.addEventListener("scroll", reveal);
 
-const reveals = document.querySelectorAll(".reveal");
+}
 
-function revealAnimation(){
+/* ==========================================
+   Scroll Progress
+========================================== */
 
-    reveals.forEach((item)=>{
+function initProgressBar() {
 
-        const top = item.getBoundingClientRect().top;
+    const progressBar = document.getElementById("scroll-progress");
 
-        const visible = window.innerHeight - 120;
+    if (!progressBar) return;
 
-        if(top < visible){
+    window.addEventListener("scroll", () => {
 
-            item.classList.add("active");
+        const scrollTop = window.scrollY;
 
-        }
+        const height =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        const progress = (scrollTop / height) * 100;
+
+        progressBar.style.width = progress + "%";
 
     });
 
 }
 
-window.addEventListener("scroll",revealAnimation);
+/* ==========================================
+   Smooth Scroll
+========================================== */
 
-window.addEventListener("load",revealAnimation);
+function initSmoothScroll() {
 
-/* ==========================
-   Scroll Progress
-========================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-const progressBar = document.getElementById("scroll-progress");
+        anchor.addEventListener("click", function (e) {
 
-window.addEventListener("scroll",()=>{
+            const target = document.querySelector(
+                this.getAttribute("href")
+            );
 
-    const scrollTop = window.scrollY;
+            if (!target) return;
 
-    const height =
-        document.documentElement.scrollHeight
-        - window.innerHeight;
-
-    const progress =
-        (scrollTop/height)*100;
-
-    progressBar.style.width = progress+"%";
-
-});
-
-/* ==========================
-   Smooth Anchor
-========================== */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-
-    anchor.addEventListener("click",function(e){
-
-        e.preventDefault();
-
-        const target=document.querySelector(this.getAttribute("href"));
-
-        if(target){
+            e.preventDefault();
 
             target.scrollIntoView({
 
-                behavior:"smooth"
+                behavior: "smooth"
 
             });
 
-        }
+        });
 
     });
 
-});
+}
 
-/* ==========================
+/* ==========================================
    Mouse Glow
-========================== */
+========================================== */
 
-const glow = document.getElementById("mouse-glow");
+function initMouseGlow() {
 
-document.addEventListener("mousemove",(e)=>{
+    if (window.innerWidth < 768) return;
 
-    glow.style.left=e.clientX+"px";
+    const glow = document.getElementById("mouse-glow");
 
-    glow.style.top=e.clientY+"px";
+    if (!glow) return;
 
-});
+    document.addEventListener("mousemove", e => {
 
-/* ==========================
-   Card Hover
-========================== */
+        glow.style.left = e.clientX + "px";
 
-document.querySelectorAll(".glass-card").forEach(card=>{
-
-    card.addEventListener("mousemove",(e)=>{
-
-        const rect=card.getBoundingClientRect();
-
-        const x=e.clientX-rect.left;
-
-        const y=e.clientY-rect.top;
-
-        const rotateY=((x/rect.width)-0.5)*12;
-
-        const rotateX=((y/rect.height)-0.5)*-12;
-
-        card.style.transform=
-            `perspective(1000px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateY(-6px)`;
+        glow.style.top = e.clientY + "px";
 
     });
 
-    card.addEventListener("mouseleave",()=>{
+}
 
-        card.style.transform="";
+/* ==========================================
+   Glass Card Hover
+========================================== */
+
+function initGlassCard() {
+
+    if (window.innerWidth < 768) return;
+
+    document.querySelectorAll(".glass-card").forEach(card => {
+
+        card.addEventListener("mousemove", e => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+
+            const y = e.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 12;
+
+            const rotateX = ((y / rect.height) - 0.5) * -12;
+
+            card.style.transform = `
+                perspective(1000px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                translateY(-6px)
+            `;
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.style.transform = "";
+
+        });
 
     });
 
-});
+}

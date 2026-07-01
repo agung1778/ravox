@@ -11,7 +11,7 @@
         <span class="text-orange-500 uppercase">
             {{ ucfirst($post->category) }}
         </span>
-        <h1 class="text-6xl font-black mt-4">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl leading-tight font-black mt-4">
             {{ $post->title }}
         </h1>
         <div class="flex gap-6 mt-6 text-gray-400">
@@ -36,11 +36,11 @@
 
 @if($post->gallery)
 <section class="pb-24">
-<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <h2 class="text-4xl font-bold mb-10">
         Gallery
     </h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center lg:grid-cols-3 gap-6">
         @foreach($post->gallery as $image)
         <img loading="lazy" decoding="async"
             src="{{ asset('storage/'.$image) }}"
@@ -53,11 +53,11 @@
 
 @if($relatedPosts->count())
 <section class="pb-24">
-<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <h2 class="text-4xl font-bold mb-10">
         Related Articles
     </h2>
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid  sm:grid-cols-2  xl:grid-cols-3  gap-8">
         @foreach($relatedPosts as $related)
         <a
             href="{{ route('blog.show',$related->slug) }}"

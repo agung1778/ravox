@@ -8,7 +8,7 @@
                 TESTIMONIALS
             </span>
 
-            <h2 class="text-4xl lg:text-6xl font-black mt-4">
+            <h2 class="text-4xl lg:text-4xl sm:text-5xl lg:text-7xl leading-tight font-black mt-4">
 
                 What Clients Say
 
@@ -22,13 +22,13 @@
 
         </div>
 
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center xl:grid-cols-3 gap-8 mt-20">
 
             @forelse($testimonials as $testimonial)
 
                 <div class="glass-card rounded-3xl p-8 hover:-translate-y-2 transition">
 
-                    <div class="flex items-center gap-1 text-orange-500 text-lg">
+                    <div class="flex items-center gap-1 text-orange-500 text-base md:text-lg leading-8 max-w-xl">
 
                         ★★★★★
 

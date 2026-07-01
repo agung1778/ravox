@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="pt-40 pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <span class="text-orange-500 uppercase tracking-widest">
             About RAVØX
         </span>
@@ -17,7 +17,7 @@
 </section>
 
 <section class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <img loading="lazy" decoding="async" src="{{ asset('assets/logo-ravox-1.png') }}" class="w-80 mx-auto">
@@ -72,11 +72,11 @@
 </section>
 
 <section class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <h2 class="text-5xl font-bold text-center">
             Skills & Technologies
         </h2>
-        <div class="grid md:grid-cols-2 gap-8 mt-16">
+        <div class="grid lg:grid-cols-2 gap-12 items-center gap-8 mt-16">
             <div class="glass-card p-8">
                 <h3 class="text-2xl font-bold">
                     Web Development

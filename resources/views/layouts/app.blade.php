@@ -26,7 +26,6 @@
     class="fixed top-0 left-0 z-[99999] h-1 bg-orange-500"
     style="width:0%">
 </div>
-    @include('components.home.loading')
     <main>
         @yield('content')
     </main>

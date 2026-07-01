@@ -11,7 +11,7 @@
                     ABOUT RAVØX
                 </span>
 
-                <h2 class="text-4xl lg:text-6xl font-black mt-6">
+                <h2 class="text-4xl lg:text-4xl sm:text-5xl lg:text-7xl leading-tight font-black mt-6">
                     Crafting Websites,
                     Software &
                     Indie Games.

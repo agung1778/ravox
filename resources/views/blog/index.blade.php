@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="pt-40 pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <span class="text-orange-500 uppercase">
             RAVØX Blog
         </span>
@@ -16,7 +16,7 @@
 </div>
 </section>
 <section class="pb-16">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <form method="GET" class="flex flex-col md:flex-row gap-4">
         <input
             type="text"
@@ -59,7 +59,7 @@
 
 @if($featuredPost)
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <a href="{{ route('blog.show',$featuredPost->slug) }}" class="glass-card overflow-hidden block">
         <div class="grid lg:grid-cols-2">
             <img loading="lazy" decoding="async" src="{{ asset('storage/'.$featuredPost->banner ?: $featuredPost->thumbnail) }}" class="w-full h-full object-cover">
@@ -81,8 +81,8 @@
 @endif
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center lg:grid-cols-3 gap-8">
         @foreach($posts as $post)
         <a href="{{ route('blog.show',$post->slug) }}" class="glass-card overflow-hidden group">
             <img loading="lazy" decoding="async" src="{{ asset('storage/'.$post->thumbnail) }}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
@@ -112,7 +112,7 @@
 </section>
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         {{ $posts->links() }}
     </div>
 </section>

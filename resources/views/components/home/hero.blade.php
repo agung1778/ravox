@@ -20,7 +20,7 @@
                 <h1 class="mt-8 font-black leading-tight
                            text-4xl
                            sm:text-5xl
-                           md:text-6xl
+                           md:text-4xl sm:text-5xl lg:text-7xl leading-tight
                            lg:text-7xl">
 
                     Building
@@ -32,7 +32,7 @@
                     Indie Games
                 </h1>
 
-                <p class="mt-8 text-gray-400 text-lg leading-8 max-w-xl">
+                <p class="mt-8 text-gray-400  text-base md:text-lg leading-8 max-w-xl leading-8 max-w-xl">
 
                     RAVØX develops websites, software, and indie games with a
                     modern design, high performance, and an exceptional user
@@ -69,7 +69,7 @@
                 <img loading="lazy" decoding="async"
                     src="{{ asset('assets/logo-bgremove.png') }}"
                     alt="RAVØX Logo"
-                    class="relative w-56 sm:w-72 md:w-80 lg:w-[420px] drop-shadow-[0_0_50px_rgba(255,120,0,.35)] animate-float"
+                    class="relative w-56 sm:w-72 md:w-72 lg:w-[420px] drop-shadow-[0_0_50px_rgba(255,120,0,.35)] animate-float"
                 >
 
             </div>

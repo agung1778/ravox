@@ -29,7 +29,7 @@
             {{-- Navigation --}}
             <div>
 
-                <h3 class="font-bold text-lg mb-6">
+                <h3 class="font-bold text-base md:text-lg leading-8 max-w-xl mb-6">
 
                     Navigation
 
@@ -56,7 +56,7 @@
             {{-- Services --}}
             <div>
 
-                <h3 class="font-bold text-lg mb-6">
+                <h3 class="font-bold text-base md:text-lg leading-8 max-w-xl mb-6">
 
                     Services
 
@@ -81,7 +81,7 @@
             {{-- Contact --}}
             <div>
 
-                <h3 class="font-bold text-lg mb-6">
+                <h3 class="font-bold text-base md:text-lg leading-8 max-w-xl mb-6">
 
                     Connect
 

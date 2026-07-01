@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="pt-40 pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <span class="text-orange-500 uppercase">
             Contact
         </span>
@@ -17,7 +17,7 @@
 </section>
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12">
             <div class="glass-card p-10">
                 <h2 class="text-3xl font-bold">
@@ -72,7 +72,7 @@
 </section>
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-bold text-center">
             Connect With Me
         </h2>

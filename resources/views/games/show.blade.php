@@ -3,13 +3,13 @@
 @section('content')
 
 <section class="pt-32 pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <img loading="lazy" decoding="async" src="{{ asset('storage/' . ($game->banner ?: $game->thumbnail)) }}" class="w-full h-[500px] object-cover rounded-3xl">
         <div class="mt-12">
             <span class="text-orange-500 uppercase">
                 {{ ucfirst($game->genre) }}
             </span>
-            <h1 class="text-6xl font-black mt-4">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl leading-tight font-black mt-4">
                 {{ $game->title }}
             </h1>
             <div class="flex flex-wrap gap-4 mt-6">
@@ -35,8 +35,8 @@
 </section>
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="grid  sm:grid-cols-2  xl:grid-cols-3  gap-8">
             <div class="glass-card p-8 text-center">
                 <span>
                     👁 {{ number_format($game->views) }} Views
@@ -57,7 +57,7 @@
 </section>
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="glass-card p-10">
             <h2 class="text-3xl font-bold mb-8">
                 Get The Game
@@ -76,7 +76,7 @@
 
 @if($game->youtube_url)
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold mb-8">
             Official Trailer
         </h2>
@@ -107,11 +107,11 @@
 
 @if(!empty($game->gallery))
 <section class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-bold mb-10">
             Screenshots
         </h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center lg:grid-cols-3 gap-6">
             @foreach($game->gallery as $image)
             <img loading="lazy" decoding="async"
                 src="{{ asset('storage/'.$image) }}"
@@ -123,7 +123,7 @@
 @endif
 
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="glass-card p-10">
             <h2 class="text-3xl font-bold mb-6">
                 About This Game
@@ -137,7 +137,7 @@
 
 @if($game->patch_notes)
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="glass-card p-10">
             <h2 class="text-3xl font-bold mb-6">
                 Patch Notes
@@ -152,11 +152,11 @@
 
 @if($game->minimum_specs || $game->recommended_specs)
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold mb-8">
             System Requirements
         </h2>
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center gap-8">
             @if($game->minimum_specs)
             <div class="glass-card p-8">
                 <h3 class="text-xl font-bold mb-4">
@@ -184,7 +184,7 @@
 
 @if($relatedGames->count())
 <section class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-bold mb-10">
             Related Games
         </h2>
@@ -194,7 +194,7 @@
         <p class="text-gray-500 text-sm">
             {{ ucfirst($related->engine) }}
         </p>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid  sm:grid-cols-2  xl:grid-cols-3  gap-8">
             @foreach($relatedGames as $related)
             <a href="{{ route('games.show',$related->slug) }}"
                class="glass-card overflow-hidden">

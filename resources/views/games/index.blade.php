@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="pt-40 pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <span class="text-orange-500 uppercase">
             RAVØX Game Studio
         </span>
@@ -18,7 +18,7 @@
 
 @if($featuredGame)
 <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="glass-card overflow-hidden">
             <div class="grid lg:grid-cols-2">
                 <img loading="lazy" decoding="async" src="{{ asset('storage/' . ($featuredGame->banner ?? $featuredGame->thumbnail)) }}" class="w-full h-full object-cover">
@@ -32,7 +32,7 @@
                     <p class="mt-6 text-gray-400">
                     {{ Str::limit($featuredGame->description, 180) }}
                     </p>
-                    <div class="flex gap-4 mt-8">
+                    <div class="flex flex-col sm:flex-row gap-4 text-center mt-8">
                         <a href="{{ route('games.show', $featuredGame->slug) }}" class="px-6 py-3 bg-orange-500 rounded-xl">
                             View Game
                         </a>
@@ -45,7 +45,7 @@
 @endif
 
 <section class="pb-32">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
             <div>
                 <h2 class="text-5xl font-bold">
@@ -92,7 +92,7 @@
                 </button>
             </form>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center lg:grid-cols-3 gap-8">
             @forelse($games as $game)
                 <a href="{{ route('games.show', $game->slug) }}" class="glass-card overflow-hidden group">
                     <img loading="lazy" decoding="async" src="{{ asset('storage/'.$game->thumbnail) }}" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">

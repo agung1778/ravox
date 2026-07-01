@@ -12,7 +12,7 @@
 
                 </span>
 
-                <h2 class="text-4xl lg:text-6xl font-black mt-4">
+                <h2 class="text-4xl lg:text-4xl sm:text-5xl lg:text-7xl leading-tight font-black mt-4">
 
                     Featured Games
 
@@ -189,7 +189,7 @@
 
         @endif
 
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center xl:grid-cols-3 gap-8">
 
             @foreach($games as $game)
 

@@ -41,7 +41,7 @@
                     Blog
                 </a>
 
-                <a href="{{ route('about') }}" class="hover:text-orange-500 transition">
+                <a href="{{ route('about.index') }}" class="hover:text-orange-500 transition">
                     About
                 </a>
 

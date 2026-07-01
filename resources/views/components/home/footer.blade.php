@@ -8,7 +8,7 @@
             <div>
 
                 <img loading="lazy" decoding="async"
-                    src="{{ asset(setting('logo') ?: 'assets/logo-ravox-1.png') }}"
+                    src="{{ asset(setting('logo') ?: 'assets/logo-bgremove.png') }}"
                     alt="RAVØX"
                     class="w-28 mb-6">
 

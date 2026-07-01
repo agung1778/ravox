@@ -10,7 +10,7 @@
             <a href="{{ route('home') }}" class="flex items-center gap-3">
 
                 <img loading="lazy" decoding="async"
-                    src="{{ asset(setting('logo') ?: 'assets/logo-ravox-1.png') }}"
+                    src="{{ asset(setting('logo') ?: 'assets/logo-bgremove.png') }}"
                     class="w-12 h-12"
                     alt="RAVØX">
 

@@ -4,7 +4,7 @@
     <div class="text-center">
 
         <img loading="lazy" decoding="async"
-            src="{{ asset('assets/logo.png') }}"
+            src="{{ asset('assets/logo-bgremove.png') }}"
             alt="RAVØX"
             class="w-32 mx-auto animate-pulse">
 

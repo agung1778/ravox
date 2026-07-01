@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy ke Home Server
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.0
 
         with:
@@ -20,30 +20,28 @@ jobs:
           port: ${{ secrets.PORT }}
 
           script: |
-            cd /var/www/ravox
+            cd ${{ secrets.PROJECT_PATH }}
 
-            echo "=== Pull Repository ==="
+            echo "== Pull Repository =="
             git pull origin main
 
-            echo "=== Install Composer ==="
-            composer install --no-dev --optimize-autoloader --no-interaction
+            echo "== Composer =="
+            composer install --no-dev --optimize-autoloader
 
-            echo "=== Install NPM ==="
+            echo "== Laravel =="
+            php artisan migrate --force
+            php artisan optimize:clear
+            php artisan optimize
+
+            echo "== Frontend =="
             npm install
-
-            echo "=== Build Vite ==="
             npm run build
 
-            echo "=== Migrate Database ==="
-            php artisan migrate --force
+            echo "== Permission =="
+            sudo chown -R www-data:www-data storage bootstrap/cache
+            sudo chmod -R 775 storage bootstrap/cache
 
-            echo "=== Clear Cache ==="
-            php artisan optimize:clear
+            echo "== Restart PHP =="
+            sudo systemctl reload php8.4-fpm
 
-            echo "=== Reload PHP ==="
-            sudo systemctl restart php8.4-fpm
-
-            echo "=== Reload Nginx ==="
-            sudo systemctl reload nginx
-
-            echo "=== Deploy Selesai ==="
+            echo "== Done =="

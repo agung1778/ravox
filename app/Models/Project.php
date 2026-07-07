@@ -44,29 +44,45 @@ class Project extends Model
         ];
     }
     protected static function booted()
-    {
-        static::deleting(function ($project) {
+{
+    static::deleting(function ($project) {
 
+        if (!empty($project->thumbnail)) {
             Storage::disk('public')->delete($project->thumbnail);
-            Storage::disk('public')->delete($project->banner);
+        }
 
-            if ($project->gallery) {
-                foreach ($project->gallery as $image) {
+        if (!empty($project->banner)) {
+            Storage::disk('public')->delete($project->banner);
+        }
+
+        if (!empty($project->gallery) && is_array($project->gallery)) {
+            foreach ($project->gallery as $image) {
+                if (!empty($image)) {
                     Storage::disk('public')->delete($image);
                 }
             }
-        });
-        static::updating(function ($project) {
-            if ($project->isDirty('thumbnail')) {
-                Storage::disk('public')->delete(
-                    $project->getOriginal('thumbnail')
-                );
+        }
+    });
+
+    static::updating(function ($project) {
+
+        if ($project->isDirty('thumbnail')) {
+
+            $oldThumbnail = $project->getOriginal('thumbnail');
+
+            if (!empty($oldThumbnail)) {
+                Storage::disk('public')->delete($oldThumbnail);
             }
-            if ($project->isDirty('banner')) {
-                Storage::disk('public')->delete(
-                    $project->getOriginal('banner')
-                );
+        }
+
+        if ($project->isDirty('banner')) {
+
+            $oldBanner = $project->getOriginal('banner');
+
+            if (!empty($oldBanner)) {
+                Storage::disk('public')->delete($oldBanner);
             }
-        });
-    }
+        }
+    });
+}
 }
